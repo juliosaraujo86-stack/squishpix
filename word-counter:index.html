@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Free Word Counter – Count Words, Characters & Reading Time | SquishPix</title>
+  <meta name="description" content="Count words, characters, sentences and paragraphs instantly. See reading time and keyword density. Free, no sign-up, works offline."/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="https://squishpix.com/word-counter/"/>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"SquishPix Word Counter","url":"https://squishpix.com/word-counter/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--ease:cubic-bezier(.25,.1,.25,1);--font:'Outfit',system-ui,sans-serif;--mono:'JetBrains Mono',monospace;--r:14px;--rl:20px;--rxl:28px;}
+    [data-theme="dark"]{--bg:#000;--bg2:#0a0a0a;--bg3:#111;--bg4:#1a1a1a;--ln:rgba(255,255,255,.08);--lnh:rgba(255,255,255,.14);--t1:#f5f5f7;--t2:#a1a1a6;--t3:#6e6e73;--ac:#ffd60a;--acb:rgba(255,214,10,.1);--card:#111;--nav:rgba(0,0,0,.72);}
+    [data-theme="light"]{--bg:#fff;--bg2:#f5f5f7;--bg3:#ebebed;--bg4:#e0e0e3;--ln:rgba(0,0,0,.08);--lnh:rgba(0,0,0,.14);--t1:#1d1d1f;--t2:#6e6e73;--t3:#aeaeb2;--ac:#9d7118;--acb:rgba(157,113,24,.08);--card:#f5f5f7;--nav:rgba(255,255,255,.72);}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;}
+    body{background:var(--bg);color:var(--t1);font-family:var(--font);font-weight:400;line-height:1.5;min-height:100vh;overflow-x:hidden;transition:background .4s var(--ease),color .4s var(--ease);}
+    a{text-decoration:none;color:inherit;}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;height:52px;background:var(--nav);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid var(--ln);transition:background .4s,border-color .3s;}
+    .ni{max-width:1080px;margin:0 auto;padding:0 24px;height:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+    .logo{font-size:1.05rem;font-weight:700;letter-spacing:-.03em;color:var(--t1);}.logo span{color:#2997ff;}
+    .nl{display:flex;align-items:center;gap:2px;}@media(max-width:640px){.nl{display:none;}}
+    .nla{font-size:.8rem;font-weight:500;color:var(--t2);padding:5px 10px;border-radius:8px;transition:color .15s,background .15s;}.nla:hover{color:var(--t1);background:var(--bg3);}.nla.on{color:var(--ac);}
+    .tt{position:relative;width:36px;height:36px;border:1px solid var(--ln);border-radius:50%;background:var(--bg3);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,transform .2s;flex-shrink:0;}.tt:hover{background:var(--bg4);transform:scale(1.1);}
+    .tt svg{width:15px;height:15px;color:var(--t2);position:absolute;transition:opacity .25s,transform .4s var(--ease);}
+    [data-theme="dark"] .is{opacity:1;transform:rotate(0) scale(1);}[data-theme="dark"] .im{opacity:0;transform:rotate(90deg) scale(.7);}
+    [data-theme="light"] .is{opacity:0;transform:rotate(-90deg) scale(.7);}[data-theme="light"] .im{opacity:1;transform:rotate(0) scale(1);}
+    .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+    .bc{font-size:.75rem;color:var(--t3);margin:16px 0 0;display:flex;gap:6px;}.bc a{color:var(--t3);}.bc a:hover{color:var(--t1);}
+    .hero{padding:112px 0 48px;text-align:center;}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;font-weight:600;color:var(--ac);letter-spacing:.1em;text-transform:uppercase;margin-bottom:20px;}
+    .eyebrow::before,.eyebrow::after{content:'';display:block;width:20px;height:1px;background:currentColor;opacity:.4;}
+    h1{font-size:clamp(2.4rem,7vw,4.5rem);font-weight:900;letter-spacing:-.05em;line-height:.95;color:var(--t1);margin-bottom:20px;}h1 .dim{color:var(--t3);}
+    .sub{font-size:1rem;font-weight:300;color:var(--t2);max-width:480px;margin:0 auto 36px;line-height:1.65;}
+    .pills{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:40px;}
+    .pill{display:inline-flex;align-items:center;gap:6px;font-size:.75rem;font-weight:500;color:var(--t2);background:var(--bg2);border:1px solid var(--ln);border-radius:100px;padding:5px 13px;}
+    .ad{border:1px dashed var(--ln);border-radius:var(--r);display:flex;align-items:center;justify-content:center;color:var(--t3);font-size:.65rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;}
+    .ad-top{height:90px;margin-bottom:40px;}.ad-mid{height:120px;margin:56px 0;}.ad-bot{height:90px;margin:56px 0 0;}.ad-act{height:90px;margin-top:24px;display:none;}
+    /* STATS STRIP */
+    .strip{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--ln);border:1px solid var(--ln);border-radius:var(--rl);overflow:hidden;margin-bottom:16px;transition:background .4s,border-color .4s;}
+    @media(max-width:600px){.strip{grid-template-columns:repeat(3,1fr);}}
+    .sc{background:var(--bg2);padding:20px 10px;text-align:center;transition:background .4s;}
+    .sn{font-size:1.5rem;font-weight:800;letter-spacing:-.04em;color:var(--ac);display:block;line-height:1;margin-bottom:4px;}
+    .sl{font-size:.65rem;color:var(--t3);text-transform:uppercase;letter-spacing:.06em;}
+    /* TOOL */
+    .tc{background:var(--card);border:1px solid var(--ln);border-radius:var(--rxl);padding:28px;position:relative;overflow:hidden;transition:background .4s,border-color .4s;}
+    .tc::before{content:'';position:absolute;top:0;left:10%;right:10%;height:1px;background:var(--ac);opacity:.3;}
+    textarea{width:100%;min-height:280px;background:var(--bg3);border:1px solid var(--ln);border-radius:var(--rl);color:var(--t1);font-family:var(--font);font-size:.95rem;font-weight:300;line-height:1.7;padding:18px;resize:vertical;outline:none;transition:border-color .2s;}
+    textarea:focus{border-color:var(--ac);}
+    textarea::placeholder{color:var(--t3);}
+    .ta-foot{display:flex;justify-content:space-between;align-items:center;margin-top:12px;flex-wrap:wrap;gap:10px;}
+    .ta-note{font-size:.75rem;color:var(--t3);}
+    .btn-clr{background:none;border:1px solid var(--ln);border-radius:var(--r);color:var(--t2);font-size:.78rem;padding:7px 14px;cursor:pointer;font-family:var(--font);transition:color .2s,border-color .2s;}.btn-clr:hover{color:var(--ac);border-color:var(--ac);}
+    /* KEYWORD */
+    .kw-sec{margin-top:24px;}
+    .kw-label{font-size:.7rem;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px;}
+    .kw-list{display:flex;flex-direction:column;gap:5px;max-height:220px;overflow-y:auto;}
+    .ki{display:flex;align-items:center;gap:10px;background:var(--bg3);border:1px solid var(--ln);border-radius:var(--r);padding:9px 12px;}
+    .kw{font-size:.85rem;font-weight:500;min-width:90px;}
+    .kbb{flex:1;height:3px;background:var(--bg4);border-radius:3px;overflow:hidden;}
+    .kbf{height:100%;background:var(--ac);border-radius:3px;}
+    .kc{font-size:.75rem;color:var(--t2);min-width:60px;text-align:right;}
+    .ke{font-size:.82rem;color:var(--t3);padding:8px 0;}
+    /* SECTIONS */
+    .sec{margin:56px 0;}
+    .sec-ey{font-size:.68rem;font-weight:600;color:var(--ac);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;}
+    .sec-t{font-size:clamp(1.4rem,3.5vw,1.9rem);font-weight:800;letter-spacing:-.04em;margin-bottom:24px;}
+    .gcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;}
+    .gc{background:var(--card);border:1px solid var(--ln);border-radius:var(--rl);padding:22px;transition:border-color .2s;}
+    .gc:hover{border-color:var(--ac);}
+    .gcn{font-size:1.3rem;font-weight:800;letter-spacing:-.03em;color:var(--ac);margin-bottom:8px;}
+    .gc h3{font-size:.9rem;font-weight:700;margin-bottom:6px;}
+    .gc p{font-size:.8rem;color:var(--t2);line-height:1.6;}
+    .faq{display:flex;flex-direction:column;gap:2px;}
+    .fi{background:var(--card);border:1px solid var(--ln);border-radius:var(--r);overflow:hidden;}
+    .fq{width:100%;background:none;border:none;color:var(--t1);font-family:var(--font);font-size:.9rem;font-weight:500;padding:18px 22px;text-align:left;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;transition:color .15s;}.fq:hover{color:var(--ac);}
+    .fch{width:16px;height:16px;color:var(--t3);transition:transform .25s;flex-shrink:0;}.fi.open .fch{transform:rotate(180deg);}
+    .fa{max-height:0;overflow:hidden;transition:max-height .3s,padding .3s;padding:0 22px;font-size:.85rem;color:var(--t2);line-height:1.65;}.fi.open .fa{max-height:200px;padding:0 22px 18px;}
+    footer{border-top:1px solid var(--ln);padding:40px 0;margin-top:64px;transition:border-color .4s;}
+    .ft{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+    footer p{font-size:.78rem;color:var(--t3);}
+    .fl{display:flex;gap:16px;flex-wrap:wrap;}footer a{color:var(--t3);transition:color .15s;font-size:.78rem;}footer a:hover{color:var(--t1);}
+    ::-webkit-scrollbar{width:5px;}::-webkit-scrollbar-track{background:transparent;}::-webkit-scrollbar-thumb{background:var(--bg4);border-radius:3px;}
+  </style>
+</head>
+<body>
+<nav id="nav">
+  <div class="ni">
+    <a href="/" class="logo">Squish<span>Pix</span></a>
+    <div class="nl">
+      <a href="/image-compressor/" class="nla">Compressor</a>
+      <a href="/qr-code-generator/" class="nla">QR Code</a>
+      <a href="/password-generator/" class="nla">Password</a>
+      <a href="/word-counter/" class="nla on">Word Count</a>
+      <a href="/json-formatter/" class="nla">JSON</a>
+    </div>
+    <button class="tt" id="tt" aria-label="Toggle theme">
+      <svg class="is" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3" stroke-linecap="round"/><line x1="12" y1="21" x2="12" y2="23" stroke-linecap="round"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke-linecap="round"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke-linecap="round"/><line x1="1" y1="12" x2="3" y2="12" stroke-linecap="round"/><line x1="21" y1="12" x2="23" y2="12" stroke-linecap="round"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke-linecap="round"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke-linecap="round"/></svg>
+      <svg class="im" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+  </div>
+</nav>
+<div class="wrap">
+  <div class="bc"><a href="/">SquishPix</a><span>›</span><span>Word Counter</span></div>
+  <section class="hero">
+    <div class="eyebrow">Writing Tool</div>
+    <h1>Word Counter.<br><span class="dim">Live & Instant.</span></h1>
+    <p class="sub">Count words, characters, sentences and reading time as you type. Keyword density included — free, no sign-up.</p>
+    <div class="pills"><span class="pill">⚡ Real-time</span><span class="pill">📖 Reading time</span><span class="pill">🔑 Keyword density</span><span class="pill">🔒 Private</span></div>
+    <div class="ad ad-top"><!-- AdSense --></div>
+  </section>
+
+  <div class="strip">
+    <div class="sc"><span class="sn" id="sW">0</span><span class="sl">Words</span></div>
+    <div class="sc"><span class="sn" id="sC">0</span><span class="sl">Chars</span></div>
+    <div class="sc"><span class="sn" id="sCns">0</span><span class="sl">No spaces</span></div>
+    <div class="sc"><span class="sn" id="sSe">0</span><span class="sl">Sentences</span></div>
+    <div class="sc"><span class="sn" id="sPa">0</span><span class="sl">Paragraphs</span></div>
+    <div class="sc"><span class="sn" id="sR" style="font-size:1rem;">0s</span><span class="sl">Read time</span></div>
+  </div>
+
+  <div class="tc">
+    <textarea id="ta" placeholder="Paste or type your text here — word count updates instantly as you write…"></textarea>
+    <div class="ta-foot"><span class="ta-note" id="tanote">0 characters · 0 words</span><button class="btn-clr" id="btnClr">✕ Clear</button></div>
+    <div class="ad ad-act" id="adAct"><!-- AdSense after interaction --></div>
+    <div class="kw-sec">
+      <div class="kw-label">Top Keywords</div>
+      <div class="kw-list" id="kwList"><span class="ke">Start typing to see keyword frequency…</span></div>
+    </div>
+  </div>
+
+  <div class="ad ad-mid"><!-- AdSense mid --></div>
+
+  <section class="sec">
+    <p class="sec-ey">Content guide</p>
+    <h2 class="sec-t">Word count by content type</h2>
+    <div class="gcards">
+      <div class="gc"><div class="gcn">300–500</div><h3>Social Media Post</h3><p>LinkedIn articles, Facebook posts. Short, punchy, focused on a single idea.</p></div>
+      <div class="gc"><div class="gcn">500–800</div><h3>News Article</h3><p>Covers the basics of a story. Good for timely content and quick updates.</p></div>
+      <div class="gc"><div class="gcn">1,500–2,500</div><h3>SEO Blog Post</h3><p>Sweet spot for Google rankings. Covers a topic in depth without padding.</p></div>
+      <div class="gc"><div class="gcn">2,500–4,000</div><h3>Long-form Guide</h3><p>Comprehensive content. Ranks well for competitive keywords when quality is high.</p></div>
+      <div class="gc"><div class="gcn">250–350</div><h3>Email Newsletter</h3><p>Short emails get higher engagement. One clear CTA.</p></div>
+      <div class="gc"><div class="gcn">50,000+</div><h3>Book / E-book</h3><p>Non-fiction books average 50,000–80,000 words. Lead-gen e-books: 5,000–15,000.</p></div>
+    </div>
+  </section>
+
+  <div class="ad ad-bot"><!-- AdSense bottom --></div>
+
+  <section class="sec">
+    <p class="sec-ey">FAQ</p>
+    <h2 class="sec-t">Frequently asked questions</h2>
+    <div class="faq">
+      <div class="fi"><button class="fq">How does the word counter work?<svg class="fch" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></button><div class="fa">Paste or type your text and all counts update instantly in real time. No button to click.</div></div>
+      <div class="fi"><button class="fq">How is reading time calculated?<svg class="fch" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></button><div class="fa">Based on 238 words per minute — the most widely cited average adult reading speed from published research.</div></div>
+      <div class="fi"><button class="fq">How many words should a blog post have?<svg class="fch" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></button><div class="fa">For SEO, most top-ranking posts are 1,500–2,500 words. Long-form content (3,000+) ranks well for competitive keywords.</div></div>
+      <div class="fi"><button class="fq">Does this tool store my text?<svg class="fch" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></button><div class="fa">No. All processing happens in your browser. Your text is never sent to any server.</div></div>
+      <div class="fi"><button class="fq">What is keyword density?<svg class="fch" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></button><div class="fa">How often a word appears relative to total word count (%). SEO experts recommend keeping primary keywords at 1%–2%.</div></div>
+    </div>
+  </section>
+
+  <footer><div class="ft"><p>© 2025 SquishPix · Free Online Tools</p><div class="fl"><a href="/">Home</a><a href="/image-compressor/">Compressor</a><a href="/qr-code-generator/">QR Code</a><a href="/password-generator/">Password</a><a href="/json-formatter/">JSON</a><a href="/privacy/">Privacy</a></div></div></footer>
+</div>
+<script>
+  const root=document.documentElement,tt=document.getElementById('tt');
+  const sv=localStorage.getItem('sp-theme');if(sv)root.setAttribute('data-theme',sv);
+  tt.addEventListener('click',()=>{const n=root.getAttribute('data-theme')==='dark'?'light':'dark';root.setAttribute('data-theme',n);localStorage.setItem('sp-theme',n);});
+  window.addEventListener('scroll',()=>{document.getElementById('nav').style.borderBottomColor=window.scrollY>8?'var(--lnh)':'var(--ln)';},{passive:true});
+  document.querySelectorAll('.fq').forEach(b=>b.addEventListener('click',()=>{const i=b.closest('.fi'),o=i.classList.contains('open');document.querySelectorAll('.fi').forEach(x=>x.classList.remove('open'));if(!o)i.classList.add('open');}));
+
+  const STOP=new Set(['the','a','an','and','or','but','in','on','at','to','for','of','with','by','from','is','was','are','were','be','been','have','has','had','do','does','did','will','would','could','should','this','that','these','those','it','its','i','you','he','she','we','they','me','him','her','us','them','my','your','his','our','their','what','which','who','how','when','where','why','if','as','so','not','no','all','more','than','then','there','here']);
+  const ta=document.getElementById('ta');let adShown=false;
+
+  function analyze(){
+    const txt=ta.value;
+    const words=txt.trim()===''?[]:txt.trim().split(/\s+/).filter(w=>w.length>0);
+    const wc=words.length,cc=txt.length,cns=txt.replace(/\s/g,'').length;
+    const se=txt.trim()===''?0:(txt.match(/[^.!?]*[.!?]+/g)||[]).length||(txt.trim().length>0?1:0);
+    const pa=txt.trim()===''?0:txt.split(/\n\s*\n/).filter(p=>p.trim().length>0).length||(txt.trim().length>0?1:0);
+    const rs=Math.round((wc/238)*60);let rt='0s';
+    if(rs>=60){const m=Math.floor(rs/60),s=rs%60;rt=s>0?`${m}m ${s}s`:`${m}m`;}else if(rs>0)rt=rs+'s';
+    document.getElementById('sW').textContent=wc.toLocaleString();
+    document.getElementById('sC').textContent=cc.toLocaleString();
+    document.getElementById('sCns').textContent=cns.toLocaleString();
+    document.getElementById('sSe').textContent=se.toLocaleString();
+    document.getElementById('sPa').textContent=pa.toLocaleString();
+    document.getElementById('sR').textContent=rt;
+    document.getElementById('tanote').textContent=`${cc.toLocaleString()} characters · ${wc.toLocaleString()} words`;
+    updateKW(words,wc);
+    if(!adShown&&wc>10){document.getElementById('adAct').style.display='flex';adShown=true;}
+  }
+
+  function updateKW(words,total){
+    const kl=document.getElementById('kwList');
+    if(!words.length){kl.innerHTML='<span class="ke">Start typing to see keyword frequency…</span>';return;}
+    const freq={};
+    words.forEach(w=>{const c=w.toLowerCase().replace(/[^a-z0-9]/g,'');if(c.length>2&&!STOP.has(c))freq[c]=(freq[c]||0)+1;});
+    const sorted=Object.entries(freq).sort((a,b)=>b[1]-a[1]).slice(0,10);
+    if(!sorted.length){kl.innerHTML='<span class="ke">No significant keywords found yet…</span>';return;}
+    const mx=sorted[0][1];
+    kl.innerHTML=sorted.map(([w,c])=>`<div class="ki"><span class="kw">${w}</span><div class="kbb"><div class="kbf" style="width:${(c/mx)*100}%"></div></div><span class="kc">${c}× · ${((c/total)*100).toFixed(1)}%</span></div>`).join('');
+  }
+
+  ta.addEventListener('input',analyze);
+  document.getElementById('btnClr').addEventListener('click',()=>{ta.value='';adShown=false;document.getElementById('adAct').style.display='none';analyze();});
+</script>
+</body>
+</html>
